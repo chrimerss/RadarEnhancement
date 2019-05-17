@@ -6,7 +6,7 @@ LSTM is good at processing time series data.
 The model structure can be decomposed by two networks, one is encoder, and the other is predictor.
 
 
-Model configurations:  
+Model configurations:
 
 Model Name|hidden layers|# training samples|tsize|# epochs|training process|Date
 --------|--------|----------|----------|--------------|--------|------|
@@ -21,11 +21,14 @@ Fig.2 Comparison of predction and observation
 
 ### Wind Effect
 
+## GAN
+
+
 ## GRU
 
 ## Optical Flow
 
-## Kalman Filter 
+## Kalman Filter
 
 
 To be continued...
