@@ -28,9 +28,9 @@ def prepare_data(range_to_process):
 		for it in range(tsize):
 
 			base_img= np.array(Image.open(os.path.join(target_path,files[x+it])))
-			base_img= base_img/base_img.max().astype(np.float16)
+			base_img= (base_img/100./255.).astype(np.float16)
 			pred_img= np.array(Image.open(os.path.join(target_path,files[x+it+1])))
-			pred_img= pred_img/pred_img.max().astype(np.float16)
+			pred_img= (pred_img/100./255.).astype(np.float16)
 
 			if first:
 				base_img_file_name= files[x+it].split(os.sep)[-1].split('.')[0]

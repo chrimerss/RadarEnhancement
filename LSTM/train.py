@@ -8,22 +8,23 @@ from tensorboardX import SummaryWriter
 from torch.autograd import Variable
 import os
 from torchsummary import summary
+from utils import ComLoss
 
 use_gpu=True
 
 def main():
 	global use_gpu
 	# set up some parameters
-	batch_size=4
+	batch_size=1
 	lr= 1e-3
 	logging_path= 'logging/'
 	num_epoches= 500
 	epoch_to_save= 10
 	tsize=10
 
-	data_path= 'dataset'
+	data_path= '../dataset'
 	print('loading data sets ...')
-	dataset_train= DataSet(datapath= 'dataset')
+	dataset_train= DataSet(datapath= data_path)
 	loader_train= DataLoader(dataset= dataset_train, num_workers=8, batch_size=batch_size, shuffle=True)
 
 	print("# of training samples: %d\n" %int(len(dataset_train)))
@@ -31,8 +32,9 @@ def main():
 	model= RadarNet(use_gpu=use_gpu)
 	print(model)
 
-	#criterion
-	criterion= torch.nn.MSELoss()
+	criterion= ComLoss()
+
+	# model.load_state_dict(torch.load('../logging/newest-5_8.pth'))
 
 	if use_gpu:
 		model= model.cuda()
@@ -54,8 +56,8 @@ def main():
 			print('learning rate %f' %param_group['lr'])
 
 		for i, (input_train, target_train) in enumerate(loader_train, 0):
-			# input size: (4,15,1,1000,1000)
-			# target size: (4,15,1,1000,1000)
+			# input size: (4,10,1,200,200)
+			# target size: (4,10,1,200,200)
 			model.train()
 			model.zero_grad()
 			optimizer.zero_grad()
@@ -65,7 +67,7 @@ def main():
 				input_train, target_train= input_train.cuda(), target_train.cuda()
 
 			out_train= model(input_train)
-			loss= criterion(target_train, out_train)*1000
+			loss= -criterion(target_train, out_train)
 
 			loss.backward()
 			optimizer.step()
@@ -74,7 +76,7 @@ def main():
 			model.eval()
 			out_train= model(input_train)
 			output_train= torch.clamp(out_train, 0, 1)
-			print("[epoch %d/%d][%d/%d]  loss: %.4f "%(epoch+1,num_epoches, i+1,len(loader_train),loss.item()))
+			print("[epoch %d/%d][%d/%d]  obj: %.4f "%(epoch+1,num_epoches, i+1,len(loader_train),-loss.item()))
 
 			if step% 10 ==0:
 				writer.add_scalar('loss', loss.item())
@@ -86,6 +88,7 @@ def main():
 			torch.save(model.state_dict(), os.path.join(logging_path,'net_epoch%d.pth'%(epoch+1)))
 
 	torch.save(model.state_dict(), os.path.join(logging_path,'newest.pth'))
+
 
 if __name__=='__main__':
 	main()
