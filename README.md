@@ -33,7 +33,7 @@ In the GAN repository, we implement generative adversorial neural network to tra
 
 We select one event from our radar data shown below
 <p align="center">
-    <img src="demo.gif">
+    <img src="demo.gif" style="width:60%">
 </p>
 
 ## Kalman Filter 
