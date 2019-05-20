@@ -25,7 +25,6 @@ To add wind effect in, one way is to customize the loss function by comparing LS
 
 ## GAN
 
-<<<<<<< HEAD
 
 ## GRU
 
@@ -44,8 +43,16 @@ We select one event from our radar data shown below
     <img src="demo.gif" style="width:60%">
 </p>
 
-## Kalman Filter 
->>>>>>> 6c7a9f25cbe0e8611e7e7b7b6034746961336007
+The results are like this ...
+<p align="center">
+<img src="opticalflow/optical_flow.gif" style="width:60%">
+</p>
+This is pretty messy because the optical flow assumes that all pixels have the same intensity which is not the case in radar images because localized growth and decays may be generated.
+
+Here is one implementation with optical flow [Motion Vectors in Weather Radars](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.539.99&rep=rep1&type=pdf)
+
+## Kalman Filter
+
 
 
 To be continued...
