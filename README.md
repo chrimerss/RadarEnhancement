@@ -40,12 +40,12 @@ In the GAN repository, we implement generative adversorial neural network to tra
 
 We select one event from our radar data shown below
 <p align="center">
-    <img src="demo.gif" style="width:60%">
+    <img src="demo.gif" style="width:40%">
 </p>
 
 The results are like this ...
 <p align="center">
-<img src="opticalflow/optical_flow.gif" style="width:60%">
+<img src="opticalflow/optical_flow.gif" style="width:40%">
 </p>
 This is pretty messy because the optical flow assumes that all pixels have the same intensity which is not the case in radar images because localized growth and decays may be generated.
 

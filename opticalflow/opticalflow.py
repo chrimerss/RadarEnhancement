@@ -29,7 +29,7 @@ IMAGE_PATH= '../radarimages'
 
 def prep_radar_data(path=IMAGE_PATH):
     global IMAGE_PATH
-    tiffs= os.listdir(IMAGE_PATH)
+    tiffs= sorted(os.listdir(IMAGE_PATH))
     ind=1
     while True:
         if ind>=len(tiffs):
@@ -85,8 +85,7 @@ def frame_transform(path= IMAGE_PATH, pred_steps=15):
     for i in range(pred_steps):
         t_delta= 2 #minutes
         curr_time+= datetime.time_delta(minutes=t_delta)
-        frame=
-
+        pass
 
 
 def pnt_warp(src, dst,method='affine'):
