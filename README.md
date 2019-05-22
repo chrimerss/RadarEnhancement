@@ -44,8 +44,10 @@ We select one event from our radar data shown below
 </p>
 
 The results are like this ...
+
+Left panel is the ground truth, while the right is prediction.
 <p align="center">
-<img src="opticalflow/optical_flow.gif" style="width:40%">
+<img src="opticalflow/optical_flow.gif" style="width:80%">
 </p>
 This is pretty messy because the optical flow assumes that all pixels have the same intensity which is not the case in radar images because localized growth and decays may be generated.
 
