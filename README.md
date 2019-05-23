@@ -28,20 +28,26 @@ To add wind effect in, one way is to customize the loss function by comparing LS
 
 ## GRU
 
-## Optical Flow
-
-## Kalman Filter
-=======
-In the GAN repository, we implement generative adversorial neural network to train the model. The reason behind is that, we hope GAN could help us to discriminate the input data.
-
-## Semi-Lagrangian movement
-
-## Optical Flow
-
 We select one event from our radar data shown below
 <p align="center">
     <img src="demo.gif" style="width:40%">
 </p>
+
+## Kalman Filter
+
+## Semi-Lagrangian movement
+
+we create several wind field to test the robustness of this algorithm with radar movement, the first goes with uniform speed gradient wind vector.
+
+The basic idea of semi-lagrangian goes here ...
+the stability analysis of semi-lagrangian algorithm goes here...
+
+
+<p align="center">
+    <img src="lagrangian/demo_uniform.gif" style="width: 40%">
+</p>
+
+## Optical Flow
 
 The results are like this ...
 
