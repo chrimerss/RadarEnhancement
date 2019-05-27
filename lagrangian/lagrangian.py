@@ -31,6 +31,19 @@ class SemiLagrangian(object):
 
     def wind_field_circular(self):
         '''circular wind field'''
+        x= np.linspace(10,-10,1000)
+        y= np.linspace(0,10,1000)
+        u,v= np.meshgrid(x,y)
+
+        return u,v
+
+    def wind_field_convergence(self):
+        x= np.r_[np.linspace(0,5,300), np.linspace(-5,0,700)]
+        y=np.zeros(1000)
+        u,v= np.meshgrid(x,y)
+
+        return u,v
+
 
     def forecast(self, frame, wind_field, lead_steps, **kwargs):
         '''
@@ -102,7 +115,11 @@ class SemiLagrangian(object):
 
     def process(self, wind=None):
         if wind is None:
+            raise ValueError('not initialize wind field!')
+        elif wind=='uniform':
             wind= np.stack(self.wind_field_uniform())
+        elif wind=='circular':
+            wind= np.stack(self.wind_field_circular())
 
         pred_frames=  self.forecast(self.bench_mark, wind, lead_steps=10, verbose=True)
 
@@ -128,12 +145,15 @@ class SemiLagrangian(object):
         None
 
         '''
+        from mpl_toolkits.axes_grid1 import make_axes_locatable
         gif_writer= kwargs.get('gif_writer', 'imagemagick')
         fps= kwargs.get('fps', 1)
         bitrate= kwargs.get('bitrate',50)
         interval= kwargs.get('interval',0)
         fig_size= kwargs.get('fig_size',(8,10))
         fig, ax= plt.subplots(1,1, figsize=fig_size)
+        div = make_axes_locatable(ax)
+        cax = div.append_axes('right', '5%', '5%')
 
         def _frame(frames, wind_field):
             for i, frame in enumerate(frames):
@@ -144,10 +164,11 @@ class SemiLagrangian(object):
             frame= args[0]
             wind= args[1]
             title= args[2]
-            ax.imshow(frame)
+            im= ax.imshow(frame)
             ax.quiver(np.arange(0, wind.shape[1],100), np.arange(0, wind.shape[2],100),
                      wind[0,0:1000:100,0:1000:100], -wind[1,0:1000:100,0:1000:100],color='white')
             ax.set_title(title)
+            fig.colorbar(im, cax=cax)
 
 
         ani= animation.FuncAnimation(fig, _update, _frame(frames, wind_field), interval=0)
@@ -155,6 +176,6 @@ class SemiLagrangian(object):
 
 if __name__=='__main__':
     semi_model= SemiLagrangian()
-    wind= np.stack(semi_model.wind_field_uniform())
-    pred_frames= semi_model.process()
-    semi_model.visualize(pred_frames, wind,'demo_uniform.gif')
+    wind= np.stack(semi_model.wind_field_convergence())
+    pred_frames= semi_model.process(wind=wind)
+    semi_model.visualize(pred_frames, wind,'demo_converge.gif')

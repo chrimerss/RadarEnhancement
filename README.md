@@ -44,8 +44,17 @@ the stability analysis of semi-lagrangian algorithm goes here...
 
 
 <p align="center">
-    <img src="lagrangian/demo_uniform.gif" style="width: 40%">
+    <img src="lagrangian/demo_uniform.gif" style="width:30%"><br>
+    <FIGCAPTION>radar movement under uniform wind vector</FIGCAPTION>
+    <img src="lagrangian/demo_circular.gif" style="width:30%">
+    <FIGCAPTION>radar movement under circular wind vector</FIGCAPTION>
+    <img src="lagrangian/demo_converge.gif" style="width:30%">
+    <FIGCAPTION>radar movement under converging wind vector</FIGCAPTION>
 </p>
+
+**unsolved problem:**
+
+1. when cloud converges due to conteract wind vector, it will collapse somehow.
 
 ## Optical Flow
 
@@ -69,4 +78,5 @@ Here is one implementation with optical flow [Motion Vectors in Weather Radars](
 
 
 
-To be continued...
+## To-do List
+- [x] Test on circular wind vector (Semi-lagrangian)
