@@ -30,7 +30,7 @@ To add wind effect in, one way is to customize the loss function by comparing LS
 
 We select one event from our radar data shown below
 <p align="center">
-    <img src="demo.gif" style="width:40%">
+    <img src="demo.gif" width="60%">
 </p>
 
 ## Kalman Filter
@@ -44,12 +44,12 @@ the stability analysis of semi-lagrangian algorithm goes here...
 
 
 <p align="center">
-    <img src="lagrangian/demo_uniform.gif" style="width:30%"><br>
-    <FIGCAPTION>radar movement under uniform wind vector</FIGCAPTION>
-    <img src="lagrangian/demo_circular.gif" style="width:30%">
-    <FIGCAPTION>radar movement under circular wind vector</FIGCAPTION>
-    <img src="lagrangian/demo_converge.gif" style="width:30%">
-    <FIGCAPTION>radar movement under converging wind vector</FIGCAPTION>
+    <img src="lagrangian/demo_uniform.gif" width="30%">
+<!--     <FIGCAPTION>radar movement under uniform wind vector</FIGCAPTION> -->
+    <img src="lagrangian/demo_circular.gif" width="30%">
+<!--     <FIGCAPTION>radar movement under circular wind vector</FIGCAPTION> -->
+    <img src="lagrangian/demo_converge.gif" width="30%">
+<!--     <FIGCAPTION>radar movement under converging wind vector</FIGCAPTION> -->
 </p>
 
 **unsolved problem:**
