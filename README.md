@@ -74,6 +74,10 @@ Here is one implementation with optical flow [Motion Vectors in Weather Radars](
     <img src="images/flownet.png"
 </p>
 
+## Gaussian Mixture Models
+
+A full description and simple code about how Gaussian Mixture Model (GMM) works can be found at [Jupyter Notebook](https://github.com/llSourcell/Gaussian_Mixture_Models/blob/master/intro_to_gmm_%26_em.ipynb)
+
 ## Kalman Filter
 
 
