@@ -89,8 +89,8 @@ def main():
 			# print('memory allocated: ', torch.cuda.memory_allocated(device=device))
 			# print('max memory allocated: ',torch.cuda.max_memory_allocated(device=device))
 		#save model
-		if epoch % epoch_to_save==0:
-			torch.save(model.state_dict(), os.path.join(logging_path,'net_epoch%d.pth'%(epoch+1)))
+		# if epoch % epoch_to_save==0:
+		# 	torch.save(model.state_dict(), os.path.join(logging_path,'net_epoch%d.pth'%(epoch+1)))
 
 	torch.save(model.state_dict(), os.path.join(logging_path,'newest.pth'))
 

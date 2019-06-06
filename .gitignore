@@ -2,3 +2,4 @@ __pycache__
 dataset/*
 logging/*
 *.ipynb_checkpoints
+GRU/logging/*
